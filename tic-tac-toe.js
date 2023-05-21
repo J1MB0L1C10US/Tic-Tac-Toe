@@ -1,5 +1,5 @@
-const x = 1
-const o = 0
+const x = 1;
+const o = 0;
 let grid = {
     tl: null,
     tm: null,
