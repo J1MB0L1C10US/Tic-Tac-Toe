@@ -1,4 +1,3 @@
-import inquirer from 'inquirer';
 import {
   createArray,
   displayPrompt
@@ -9,13 +8,25 @@ let gameBoard = {
   isPlayerOneTurn: true,
 };
 
-export const init = () => {
-  return inquirer.prompt({
-    name: 'variableName',
-    message: displayPrompt(gameBoard)
-  });
+const nextTurn = () => {
+  gameBoard.isXTurn = !gameBoard.isXTurn;
+  return displayPrompt(gameBoard)
+    .then(parseAnswer);
 };
 
-init().then(data => {
-  console.log(data);
-});
+const parseAnswer = ({target}) => {
+
+  if (isNaN(target))
+    return displayPrompt(gameBoard)
+      .then(parseAnswer);
+
+  gameBoard.state[target] = gameBoard.isXTurn ? 'X' : 'O';
+
+  return nextTurn();
+};
+
+export const init = () => {
+  return nextTurn();
+};
+
+await init();
