@@ -4,7 +4,8 @@ export const createArray = (length) => {
 };
 
 export const displayPrompt = (gameBoard) => {
-  const { state } = gameBoard;
+  // const { state } = gameBoard;
+  const state = gameBoard.state;
 
   return inquirer.prompt({
     name: 'target',
