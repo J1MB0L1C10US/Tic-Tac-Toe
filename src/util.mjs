@@ -1,9 +1,3 @@
-// function createArray() {
-
-// }
-const createArray = (length) => {
+export const createArray = (length) => {
     return new Array(length).fill('');
-};
-export {
-    createArray
 };

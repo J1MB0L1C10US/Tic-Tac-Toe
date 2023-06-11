@@ -1,32 +1,20 @@
-import * as util from './util.mjs';
-// console.log(util);
 import inquirer from 'inquirer';
+import {
+  createArray
+} from './util.mjs';
+
 let gameBoard = {
-  state: util.createArray(9),
+  state: createArray(9),
   isPlayerOneTurn: true,
 };
 
-// console.log(gameBoard);
-
-let init = () => {
-  return inquirer
-  .prompt([
-    /* Pass your questions in here */
-    'what is your name?'
-  ])
-  .then((answers) => {
-    // Use user feedback for... whatever!!
-  })
-  .catch((error) => {
-    if (error.isTtyError) {
-      // Prompt couldn't be rendered in the current environment
-    } else {
-      // Something else went wrong
-    }
+export const init = () => {
+  return inquirer.prompt({
+    name: 'variableName',
+    message: 'here is my message'
   });
-  return gameBoard;
 };
-// export default init();
-module.exports = {
-  init
-}
+
+init().then(data => {
+  console.log(data);
+});
