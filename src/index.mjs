@@ -1,6 +1,7 @@
 import inquirer from 'inquirer';
 import {
-  createArray
+  createArray,
+  displayPrompt
 } from './util.mjs';
 
 let gameBoard = {
@@ -11,7 +12,7 @@ let gameBoard = {
 export const init = () => {
   return inquirer.prompt({
     name: 'variableName',
-    message: 'here is my message'
+    message: displayPrompt(gameBoard)
   });
 };
 
